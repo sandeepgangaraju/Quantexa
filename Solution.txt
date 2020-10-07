@@ -9,9 +9,9 @@ import org.apache.spark.sql.SparkSession
 
 val spark = SparkSession.builder().appName("flight").enableHiveSupport().getOrCreate()
 
-val passengersData = spark.read.option("header",true).option("delimiter", ",").option("dateFormat", "yyyy-MM-dd").option("inferSchema", "true").csv("dbfs:/FileStore/shared_uploads/sheik5azmal@gmail.com/passengers.csv")
+val passengersData = spark.read.option("header",true).option("delimiter", ",").option("dateFormat", "yyyy-MM-dd").option("inferSchema", "true").csv("dbfs:/FileStore/shared_uploads/passengers.csv")
 
-val flightData = spark.read.option("header",true).option("delimiter", ",").option("dateFormat", "yyyy-MM-dd").option("inferSchema", "true").csv("dbfs:/FileStore/shared_uploads/sheik5azmal@gmail.com/flightData.csv")
+val flightData = spark.read.option("header",true).option("delimiter", ",").option("dateFormat", "yyyy-MM-dd").option("inferSchema", "true").csv("dbfs:/FileStore/shared_uploads/flightData.csv")
 
 
 //Solution-1 Find the total number of flights for each month.
