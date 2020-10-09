@@ -14,7 +14,13 @@ val passengersData = spark.read.option("header",true).option("delimiter", ",").o
 val flightData = spark.read.option("header",true).option("delimiter", ",").option("dateFormat", "yyyy-MM-dd").option("inferSchema", "true").csv("dbfs:/FileStore/shared_uploads/flightData.csv")
 
 
-//Solution-1 Find the total number of flights for each month.
+
+
+//Solution-1
+
+
+
+
 
 val flightsPerMonth = flightData.select("flightId", "date").distinct().groupBy(trunc(col("date"), "month").alias("Month")).agg(count("flightId").alias("Number of Flights")).orderBy(asc("Month"))
 
@@ -39,7 +45,15 @@ flightsPerMonth.show
 
 
 
-//Solution-2 Find the names of the 100 most frequent flyers.
+
+
+
+//Solution-2 
+
+
+
+
+
 
 val frequentFlyers = flightData.select("passengerId", "flightId")
     .groupBy("passengerId")
@@ -83,7 +97,15 @@ topFrequentFlyers.show
 +-----------+---------------+---------+--------+
 only showing top 20 rows
 
-//Solution-3 Find the greatest number of countries a passenger has been in without being in the UK. For example, if the countries a passenger was in were: UK -> FR -> US -> CN -> UK -> DE -> UK, the correct answer would be 3 countries.
+
+
+
+
+//Solution-3 
+
+
+
+
 
 val flightDataSolution3 = flightData.withColumn(
         "direction",
